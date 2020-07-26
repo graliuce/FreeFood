@@ -101,13 +101,22 @@
         </button>
     </h1>
 
+    <div align="center">
+        <img src="static/PUCampusMap.jpg"/>
+        <input id="key-button" onclick="mapKey()" type="button" value="View Map Key"></input>
+        <div id="mapKey" style="display:none">
+            <img src="static/MapKey.jpg"/>
+        </div>
+    </div>
+
     <div class="form-popup" id="myListing">
       <form action="/action_page.php" class="form-container">
         <h1> Post Free Food <h1>
         <div class="item">
           <p>NetID</p>
           <div class="name-item">
-            <input type="text" name="netID" placeholder="netID" />          </div>
+            <input type="text" name="netID" placeholder="netID" />
+        </div>
         </div>
         <div class="item">
           <p>Food</p>
@@ -146,11 +155,17 @@
     function closeForm() {
         document.getElementById("myListing").style.display = "none";
     }
+    function mapKey() {
+        var m = document.getElementById("mapKey");
+        if (m.style.display === "none") {
+            m.style.display = "block";
+            document.getElementById("key-button").value="Hide Map Key";
+        } else {
+            m.style.display = "none";
+            document.getElementById("key-button").value="View Map Key";
+        }
+    }
     </script>
-
-    <div align="center">
-        <img src="static/PUCampusMap.jpg"/>
-    </div>
 
 </body>
 </html>
