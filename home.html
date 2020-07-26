@@ -1,148 +1,132 @@
-
 <html>
+
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Home</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="css/CSS.css">
+<script>
+  function openListingInfo(id) {
+    document.getElementById("listing_info").style.display = "block";
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        document.getElementById("listing_info_content").innerHTML = this.responseText;
+      }
+    };
+    xmlhttp.open("GET", "listing_info.php?id=" + id, true);
+    xmlhttp.send();
+  }
 
-    <title>Post Free Food</title>
-    <style>
-
-    /* The popup form - hidden by default */
-    .form-popup {
-        display: none;
-        margin: auto;
-        width: 80vw;
-        height: 100vw;
-        padding: 2vw;
-        border: 3vw solid #f1f1f1;
+  window.onclick = function(event) {
+    if (event.target == document.getElementById("listing_info")) {
+      document.getElementById("listing_info").style.display = "none";
     }
+  }
 
-    /* Contact info - hidden by default */
-    .contact-popup {
-        position: relative;
-        display: inline-block;
-    }
+  function addListing() {
+    document.getElementById("myListing").style.display = "block";
+  }
 
-    .contact-popup .contact-text {
-        visibility: hidden;
-        width: 20vw;
-        top: 100%;
-        left: 50%;
-        margin-left: -10vw;
-        background-color: black;
-        color: #fff;
-        padding: 2vw 0;
-        border-radius: 2vw;
+  function contact() {
+    document.getElementById("contact").style.display = "block";
+  }
 
-        /* Position the tooltip text - see examples below! */
-        position: absolute;
-        z-index: 1;
+  function closeForm(element, event) {
+    if (event.target === element) {
+      document.getElementById("myListing").style.display = "none";
     }
+  }
 
-    .contact-popup:hover .contact-text {
-        visibility: visible;
+  function mapKey() {
+    var m = document.getElementById("mapKey");
+    if (m.style.display === "none") {
+      m.style.display = "block";
+      document.getElementById("key-button").value="Hide Map Key";
+    } else {
+      m.style.display = "none";
+      document.getElementById("key-button").value="View Map Key";
     }
+  }
 
-    /* Add styles to the form container */
-    .form-container {
-      max-width: 90vw;
-      max-height: 100vw;
-      padding: 1vw;
-      background-color: white;
-    }
-
-    /* Full-width input fields */
-    .form-container input[type=text], .form-container input[type=password] {
-      width: 100%;
-      height: 4%;
-      padding: 2vw;
-      margin: 0vw 0 2vw 0;
-      border: none;
-      background: #f1f1f1;
-    }
-
-    /* When the inputs get focus, do something */
-    .form-container input[type=text]:focus, .form-container input[type=password]:focus {
-      background-color: #ddd;
-      outline: none;
-    }
-
-    /* Set a style for the submit/login button */
-    .form-container .btn {
-      background-color: #4CAF50;
-      color: white;
-      padding: 5vw 20v2;
-      border: none;
-      cursor: pointer;
-      width: 100%;
-      margin-bottom:1vw;
-      margin-top: 3vw;
-      opacity: 0.8;
-    }
-
-    /* Add a red background color to the cancel button */
-    .form-container .cancel {
-      background-color: red;
-    }
-
-    /* Add some hover effects to buttons */
-    .form-container .btn:hover, .open-button:hover {
-      opacity: 1;
-    }
-
-    .image {
-        width: 100%;
-    }
-
-    p {
-      font-size: 3vw;
-    }
-    input {
-      font-size: 3vw;
-    }
-    </style>
+  function filter() {
+      document.getElementById("filter").style.display = "block";
+  }
+  function applyFilter() {
+      document.getElementById("filter").style.display = "none";
+  }
+</script>
 </head>
 
 <body>
-    <h1 class="text-left">Free Food</h1>
-    <h1 class="text-right">
-        <button onclick="addListing()" type="button">Add a Listing</button>
-    </h1>
-    <h2 class="text-right">
-        <button onclick="filter()" type="button">Filter By:</button>
-    </h2>
 
-    <div class="form-popup" id="filter">
-      <form action="/action_page.php" class="form-container">
+<div id="listing_info" class="background">
+  <div id="listing_info_content" class="popup_more_info"></div>
+</div>
+
+</body>
+
+</html>
+
+
+<body>
+
+  <h1 class="text-left">Free Food</h1>
+  <h1 class="text-right">
+    <button onclick="addListing()" type="button">Add a Listing</button>
+  </h1>
+  <h2 class="text-right">
+        <button onclick="filter()" type="button">Filter By:</button>
+  </h2>
+
+  <div class="background" id="filter" onclick="closeForm(this, event)">
+      <div class="form-popup">
+        <form action="/action_page.php" class="form-container">
           <input type="checkbox" id="1" label="Food Category">
           <label for="1">Food Category</label><br>
           <input type="checkbox" id="2">
           <label for="2">Location</label><br>
-      </form>
-      <button onclick="applyFilter()" type="button">Apply</button>
+        </form>
+        <button onclick="applyFilter()" type="button">Apply</button>
+      </div>
+  </div>
+
+  <div align="center">
+    <img class="image" src="static/PUCampusMap.jpg"/>
+    <input id="key-button" onclick="mapKey()" type="button" value="View Map Key"></input>
+    <div id="mapKey" style="display:none">
+      <img class="image" src="static/MapKey.jpg"/>
     </div>
+  </div>
 
-    <div class="form-popup" id="myListing">
+  <div class="background" id="myListing" onclick="closeForm(this, event)">
+    <div class="form-popup">
 
-      <form action="/action_page.php" class="form-container">
+      <form action="" method="post" class="form-container">
         <h1> Post Free Food <h1>
         <div class="item">
           <p>NetID</p>
           <div class="name-item">
             <input type="text" name="netID" placeholder="netID" />
+          </div>
         </div>
+        <div class="item">
+          <p>Category</p>
+          <input type="text" name="category" placeholder="ex: dinner" required/>
         </div>
         <div class="item">
           <p>Food</p>
-          <input type="text" name="food" placeholder="ex: chocolate chip cookies"required//>
+          <input type="text" name="food" placeholder="ex: chocolate chip cookies" required/>
         </div>
         <div class="item">
           <p>How much is left?</p>
-          <input type="text" name="left" placeholder="ex: 3 dozen cookies">
+          <input type="text" name="remaining" placeholder="ex: 3 dozen cookies">
+        </div>
+        <div class="item">
+          <p>Duration of event? (minutes)</p>
+          <input type="text" name="duration" placeholder="ex: 60" required/>
         </div>
         <div class="item">
           <p>Location</p>
@@ -150,57 +134,24 @@
         </div>
         <div class="item">
           <p>Which Room?</p>
-            <input type="text" name="room" placeholder="ex: Frist A01" required/>
+          <input type="text" name="room" placeholder="ex: Frist A01" required/>
         </div>
         <div class="item">
           <p>Additional Comments</p>
-          <input type="text" name="left" placeholder="Insert additional comments here"/>
-         </div>
-         <div class="btn-block">
-          <button type="submit" class="btn">Post</button>
-          <button type="submit" class="btn cancel" onclick="closeForm()">Close</button>
+          <input type="text" name="comments" placeholder="Insert additional comments here"/>
+        </div>
+        <div class="btn-block">
+          <input type="submit" name="new_listing" class="btn" value="Post"/>
         </div>
       </form>
-    </div>
 
-    <div align="center">
-        <img class="image" src="static/PUCampusMap.jpg"/>
-        <input id="key-button" onclick="mapKey()" type="button" value="View Map Key"></input>
-        <div id="mapKey" style="display:none">
-            <img class="image" src="static/MapKey.jpg"/>
-        </div>
     </div>
+  </div>
 
-    <div>
-        <p>Anything not working? Email Freddy Qiu '23 (fqiu@princeton.edu) or Ashley Teng '23 (ateng@princeton.edu)</p>
-    </div>
+  <div>
+     <p>Anything not working? Email Freddy Qiu '23 (fqiu@princeton.edu) or Ashley Teng '23 (ateng@princeton.edu)</p>
+  </div>
 
-    <script>
-    function addListing() {
-        document.getElementById("myListing").style.display = "block";
-    }
-    function contact() {
-        document.getElementById("contact").style.display = "block";
-    }
-    function closeForm() {
-        document.getElementById("myListing").style.display = "none";
-    }
-    function mapKey() {
-        var m = document.getElementById("mapKey");
-        if (m.style.display === "none") {
-            m.style.display = "block";
-            document.getElementById("key-button").value="Hide Map Key";
-        } else {
-            m.style.display = "none";
-            document.getElementById("key-button").value="View Map Key";
-        }
-    }
-    function filter() {
-        document.getElementById("filter").style.display = "block";
-    }
-    function applyFilter() {
-        document.getElementById("filter").style.display = "none";
-    }
-    </script>
-  </body>
+</body>
+
 </html>
