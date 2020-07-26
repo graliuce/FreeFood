@@ -17,20 +17,26 @@
 
 html, body {
 	width: 100%;
-    margin: 0vw;
+    margin: 35px;
 	overflow-x: hidden;
 	overflow-y: auto;
 	background-color: #FEFEFE;
 }
 
 div.content {
-	margin: 0vw;
+	margin: 35px;
 	background-color: #FEFEFE;
 }
 
 
 
 h1 {
+	margin: 35px;
+	font-family: alegreya, serif;
+}
+
+h2 {
+	margin-right: 35px;
 	font-family: alegreya, serif;
 }
 
@@ -48,6 +54,12 @@ input {
 
 button {
 	font-family: open-sans-thin, serif;
+}
+
+text {
+	margin: 35px;
+	font-family: open-sans-thin, serif;
+	font-size: 20px;
 }
 
 
