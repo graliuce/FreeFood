@@ -101,14 +101,6 @@
         </button>
     </h1>
 
-    <div align="center">
-        <img src="static/PUCampusMap.jpg"/>
-        <input id="key-button" onclick="mapKey()" type="button" value="View Map Key"></input>
-        <div id="mapKey" style="display:none">
-            <img src="static/MapKey.jpg"/>
-        </div>
-    </div>
-
     <div class="form-popup" id="myListing">
       <form action="/action_page.php" class="form-container">
         <h1> Post Free Food <h1>
@@ -124,7 +116,7 @@
         </div>
         <div class="item">
           <p>How much is left?</p>
-          <input type="text" name="left" placeholder="36 chocolate chip cookies"
+          <input type="text" name="left" placeholder="36 chocolate chip cookies">
         </div>
         <div class="item">
           <p>Location</p>
@@ -143,6 +135,14 @@
           <button type="submit" class="btn cancel" onclick="closeForm()">Close</button>
         </div>
       </form>
+    </div>
+
+    <div align="center">
+        <img src="static/PUCampusMap.jpg"/>
+        <input id="key-button" onclick="mapKey()" type="button" value="View Map Key"></input>
+        <div id="mapKey" style="display:none">
+            <img src="static/MapKey.jpg"/>
+        </div>
     </div>
 
     <script>
