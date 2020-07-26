@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-<link rel="stylesheet" type="text/css" href="css/CSS.css">
+<link rel="stylesheet" type="text/css" href="CssCopy.css">
 <script>
   function openListingInfo(id) {
     document.getElementById("listing_info").style.display = "block";
@@ -72,14 +72,18 @@
 
 
 <body>
-
-  <h1 class="text-left">Free Food</h1>
+  <div class="header">
+  <h1>TigerChow</h1>
+  <p>Find Free Food </p>
+</div>
+<div class="buttons">
   <h1 class="text-right">
-    <button onclick="addListing()" type="button">Add a Listing</button>
+    <button onclick="addListing()" type="button" class = "button3">Add a Listing</button>
   </h1>
   <h2 class="text-right">
-        <button onclick="filter()" type="button">Filter By:</button>
+        <button onclick="filter()" type="button" class = "button3">Filter By</button>
   </h2>
+</div> 
 
   <div class="background" id="filter" onclick="closeForm(this, event)">
       <div class="form-popup">
@@ -101,13 +105,15 @@
       </div>
   </div>
 
+<div class="map">
   <div align="center">
-    <img class="image" src="static/PUCampusMap.jpg"/>
-    <input id="key-button" onclick="mapKey()" type="button" value="View Map Key"></input>
+    <img class="image"  src="static/PUCampusMap.jpg"/>
+    <input id="key-button" onclick="mapKey()" type="button" class = "button3" value="View Map Key"></input>
     <div id="mapKey" style="display:none">
       <img class="image" src="static/MapKey.jpg"/>
     </div>
   </div>
+</div>
 
   <div class="background" id="myListing" onclick="closeForm(this, event)">
     <div class="form-popup">
@@ -168,10 +174,9 @@
 
     </div>
   </div>
-
-  <text>
-    Anything not working? Email Freddy Qiu '23 (fqiu@princeton.edu) or Ashley Teng '23 (ateng@princeton.edu)
- </text>
+  <div class="footer">
+  <p>Anything not working? Email Freddy Qiu '23 (fqiu@princeton.edu) or Ashley Teng '23 (ateng@princeton.edu)</p>
+  </div>
 
 </body>
 
