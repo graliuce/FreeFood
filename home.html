@@ -89,6 +89,10 @@
     .form-container .btn:hover, .open-button:hover {
       opacity: 1;
     }
+
+    .image {
+        width: 100%;
+    }
     </style>
 </head>
 
@@ -100,12 +104,25 @@
             <span class="contact-text">Need Help? Email...</span>
         </button>
     </h1>
+    <h2 class="text-right">
+        <button onclick="filter()" type="button">Filter By:</button>
+    </h2>
+
+    <div class="form-popup" id="filter">
+      <form action="/action_page.php" class="form-container">
+          <input type="checkbox" id="1" label="Food Category">
+          <label for="1">Food Category</label><br>
+          <input type="checkbox" id="2">
+          <label for="2">Location</label><br>
+      </form>
+      <button onclick="applyFilter()" type="button">Apply</button>
+    </div>
 
     <div align="center">
-        <img src="static/PUCampusMap.jpg"/>
+        <img class="image" src="static/PUCampusMap.jpg"/>
         <input id="key-button" onclick="mapKey()" type="button" value="View Map Key"></input>
         <div id="mapKey" style="display:none">
-            <img src="static/MapKey.jpg"/>
+            <img class="image" src="static/MapKey.jpg"/>
         </div>
     </div>
 
@@ -164,6 +181,12 @@
             m.style.display = "none";
             document.getElementById("key-button").value="View Map Key";
         }
+    }
+    function filter() {
+        document.getElementById("filter").style.display = "block";
+    }
+    function applyFilter() {
+        document.getElementById("filter").style.display = "none";
     }
     </script>
 
