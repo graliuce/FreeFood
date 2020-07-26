@@ -8,16 +8,17 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
-    <title>Hello, world!</title>
+    <title>Post Free Food</title>
     <style>
 
     /* The popup form - hidden by default */
     .form-popup {
         display: none;
         margin: auto;
-        width: 20%;
-        padding: 20px;
-        border: 3px solid #f1f1f1;
+        width: 80vw;
+        height: 100vw;
+        padding: 2vw;
+        border: 3vw solid #f1f1f1;
     }
 
     /* Contact info - hidden by default */
@@ -28,14 +29,14 @@
 
     .contact-popup .contact-text {
         visibility: hidden;
-        width: 120px;
+        width: 20vw;
         top: 100%;
         left: 50%;
-        margin-left: -60px;
+        margin-left: -10vw;
         background-color: black;
         color: #fff;
-        padding: 5px 0;
-        border-radius: 6px;
+        padding: 2vw 0;
+        border-radius: 2vw;
 
         /* Position the tooltip text - see examples below! */
         position: absolute;
@@ -48,16 +49,18 @@
 
     /* Add styles to the form container */
     .form-container {
-      max-width: 300px;
-      padding: 10px;
+      max-width: 90vw;
+      max-height: 100vw;
+      padding: 1vw;
       background-color: white;
     }
 
     /* Full-width input fields */
     .form-container input[type=text], .form-container input[type=password] {
       width: 100%;
-      padding: 15px;
-      margin: 5px 0 22px 0;
+      height: 4%;
+      padding: 2vw;
+      margin: 0vw 0 2vw 0;
       border: none;
       background: #f1f1f1;
     }
@@ -72,11 +75,12 @@
     .form-container .btn {
       background-color: #4CAF50;
       color: white;
-      padding: 16px 20px;
+      padding: 5vw 20v2;
       border: none;
       cursor: pointer;
       width: 100%;
-      margin-bottom:10px;
+      margin-bottom:1vw;
+      margin-top: 3vw;
       opacity: 0.8;
     }
 
@@ -89,6 +93,16 @@
     .form-container .btn:hover, .open-button:hover {
       opacity: 1;
     }
+
+    .image {
+        width: 100%;
+
+    p {
+      font-size: 3vw;
+    }
+    input {
+      font-size: 3vw;
+    }
     </style>
 </head>
 
@@ -100,8 +114,32 @@
             <span class="contact-text">Need Help? Email...</span>
         </button>
     </h1>
+    <h2 class="text-right">
+        <button onclick="filter()" type="button">Filter By:</button>
+    </h2>
+
+    <div class="form-popup" id="filter">
+      <form action="/action_page.php" class="form-container">
+          <input type="checkbox" id="1" label="Food Category">
+          <label for="1">Food Category</label><br>
+          <input type="checkbox" id="2">
+          <label for="2">Location</label><br>
+      </form>
+      <button onclick="applyFilter()" type="button">Apply</button>
+    </div>
+
+    <div padding="40vw"class="form-popup" id="myListing">
+
+    <div align="center">
+        <img class="image" src="static/PUCampusMap.jpg"/>
+        <input id="key-button" onclick="mapKey()" type="button" value="View Map Key"></input>
+        <div id="mapKey" style="display:none">
+            <img class="image" src="static/MapKey.jpg"/>
+        </div>
+    </div>
 
     <div class="form-popup" id="myListing">
+
       <form action="/action_page.php" class="form-container">
         <h1> Post Free Food <h1>
         <div class="item">
@@ -112,11 +150,11 @@
         </div>
         <div class="item">
           <p>Food</p>
-          <input type="text" name="food" required//>
+          <input type="text" name="food" placeholder="ex: chocolate chip cookies"required//>
         </div>
         <div class="item">
           <p>How much is left?</p>
-          <input type="text" name="left" placeholder="36 chocolate chip cookies">
+          <input type="text" name="left" placeholder="ex: 3 dozen cookies"
         </div>
         <div class="item">
           <p>Location</p>
@@ -165,7 +203,12 @@
             document.getElementById("key-button").value="View Map Key";
         }
     }
+    function filter() {
+        document.getElementById("filter").style.display = "block";
+    }
+    function applyFilter() {
+        document.getElementById("filter").style.display = "none";
+    }
     </script>
-
-</body>
+  </body>
 </html>
