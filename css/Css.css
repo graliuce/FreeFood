@@ -197,6 +197,10 @@ div.background {
 	opacity: 1;
 }
 
+.image {
+        width: 100%;
+}
+
 p {
 	font-size: 2vw;
 }
@@ -204,4 +208,3 @@ p {
 input {
 	font-size: 2vw;
 }
-

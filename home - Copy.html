@@ -25,21 +25,21 @@
       document.getElementById("listing_info").style.display = "none";
     }
   }
-  
+
   function addListing() {
     document.getElementById("myListing").style.display = "block";
   }
-  
+
   function contact() {
     document.getElementById("contact").style.display = "block";
   }
-  
+
   function closeForm(element, event) {
     if (event.target === element) {
       document.getElementById("myListing").style.display = "none";
     }
   }
-  
+
   function mapKey() {
     var m = document.getElementById("mapKey");
     if (m.style.display === "none") {
@@ -49,6 +49,13 @@
       m.style.display = "none";
       document.getElementById("key-button").value="View Map Key";
     }
+  }
+
+  function filter() {
+      document.getElementById("filter").style.display = "block";
+  }
+  function applyFilter() {
+      document.getElementById("filter").style.display = "none";
   }
 </script>
 </head>
@@ -65,14 +72,24 @@
 
 
 <body>
-  
+
   <h1 class="text-left">Free Food</h1>
   <h1 class="text-right">
     <button onclick="addListing()" type="button">Add a Listing</button>
-    <button class="contact-popup">Contact
-      <span class="contact-text">Need Help? Email...</span>
-    </button>
   </h1>
+  <h2 class="text-right">
+        <button onclick="filter()" type="button">Filter By:</button>
+  </h2>
+
+  <div class="form-popup" id="filter">
+    <form action="/action_page.php" class="form-container">
+      <input type="checkbox" id="1" label="Food Category">
+      <label for="1">Food Category</label><br>
+      <input type="checkbox" id="2">
+      <label for="2">Location</label><br>
+    </form>
+    <button onclick="applyFilter()" type="button">Apply</button>
+  </div>
 
   <div align="center">
     <img src="static/PUCampusMap.jpg"/>
@@ -127,6 +144,10 @@
       </form>
 
     </div>
+  </div>
+
+  <div>
+     <p>Anything not working? Email Freddy Qiu '23 (fqiu@princeton.edu) or Ashley Teng '23 (ateng@princeton.edu)</p>
   </div>
 
 </body>
