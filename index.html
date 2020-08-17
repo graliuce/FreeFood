@@ -1,0 +1,218 @@
+<html>
+​
+<head>
+<title>Home</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="css/Css.css">
+<script>
+	function openListingInfo(id) {
+		document.getElementById("listing_info").style.display = "block";
+
+		var xmlhttp = new XMLHttpRequest();
+		xmlhttp.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+				document.getElementById("listing_info_content").innerHTML = this.responseText;
+			}
+		};
+		xmlhttp.open("GET", "listing_info.php?id=" + id, true);
+		xmlhttp.send();
+	}
+
+	window.onclick = function(event) {
+		if (event.target == document.getElementById("listing_info")) {
+			document.getElementById("listing_info").style.display = "none";
+		}
+	}
+
+	function addListing() {
+		document.getElementById("myListing").style.display = "block";
+	}
+
+	function addListing2() {
+		document.getElementById("myListing2").style.display = "block";
+	}
+
+	function addListing3() {
+		document.getElementById("myListing3").style.display = "block";
+	}
+
+	function addListing4() {
+		document.getElementById("myListing4").style.display = "block";
+	}
+
+	function addListing5() {
+		document.getElementById("myListing5").style.display = "block";
+	}
+
+	function closeForm(element, event) {
+		if (event.target === element) {
+			element.style.display = "none";
+		}
+	}
+
+	function setCoordinates(element, event) {
+		var clickedCoordinates = document.getElementById("click_map").getBoundingClientRect();
+		var mapCoordinates = document.getElementById("map").getBoundingClientRect();
+		var xProportion = (event.clientX - clickedCoordinates.left) / (clickedCoordinates.right - clickedCoordinates.left);
+		var yProportion = (event.clientY - clickedCoordinates.top) / (clickedCoordinates.bottom - clickedCoordinates.top);
+		document.getElementById("location_x").value = xProportion * (mapCoordinates.right - mapCoordinates.left) + mapCoordinates.left;
+		document.getElementById("location_y").value = yProportion * (mapCoordinates.bottom - mapCoordinates.top) + mapCoordinates.top;
+	}
+
+	function filter() {
+		var m = document.getElementById("filter");
+		if (m.style.display === "none") {
+			m.style.display = "block";
+		} else {
+			m.style.display = "none";
+		}
+	}
+
+	function applyFilter() {
+		document.getElementById("filter").style.display = "none";
+	}
+
+	function mapKey() {
+		var m = document.getElementById("mapKey");
+		if (m.style.display === "none") {
+			m.style.display = "block";
+			document.getElementById("key-button").innerHTML="Hide Map Key";
+		} else {
+			m.style.display = "none";
+			document.getElementById("key-button").innerHTML="View Map Key";
+		}
+	}
+</script>
+</head>
+​
+<body>
+​
+<div id="listing_info" class="background">
+	<div id="listing_info_content"></div>
+</div>
+​
+<div class="header">
+	<img class="tiger" src="static/tiger.png"> TigerChow</img>
+	<p class="slogan">Find Free Food</p>
+</div>
+​
+<div class="buttons">
+    <button onclick="addListing()" type="button" class = "button">Add New Listing</button>
+    <button onclick="filter()" type="button" class = "button">Filter Listings</button>
+	<div class="filter_content" id="filter" style="display:none">
+        <form action="">
+            <input type="checkbox" id="food1">
+            <label for="food1">Brunch</label><br>
+            <input type="checkbox" id="food2">
+            <label for="food2">Dinner</label><br>
+            <input type="checkbox" id="food3">
+            <label for="food3">Dessert</label><br>
+            <input type="checkbox" id="food4">
+            <label for="food5">Vegetarian</label><br>
+            <input type="checkbox" id="food5">
+            <label for="food6">Vegan</label><br>
+        </form>
+        <button onclick="applyFilter()" type="button" class="button">Apply</button>
+    </div>
+</div>
+​
+<div class="map">
+	<img id="map" src="static/campusMap.jpg" style="width: 100%"/>
+</div>
+​
+<div class="contact">
+	<p> Questions or concerns? Email student@princeton.edu </p>
+</div>
+​
+<div class="background" id="myListing" onclick="closeForm(this, event)">
+    <div class="popup_form">
+    	<div class="popup_header">
+			<span class="close">&times;</span>
+			<p>Post New Food Listing</p>
+		</div>
+            <form action="" method="post">
+                <p class="popup_label">Food Description:</p>
+                <input class="popup_input" type="text" name="food description" placeholder="ex: chocolate chip cookies" required/>
+                <p class="popup_label">Organization/Event:</p>
+                <input class="popup_input" type="text" name="organization/event" placeholder="ex: Women in Computer Science">
+                <p class="popup_label">Location (Building and Room):</p>
+                <input class="popup_input" type="text" name="location" placeholder="ex: Frist A01" required/>
+                <p class="popup_label">Quantity Remaining:</p>
+                <input class="popup_input" type="text" name="quantity remaining" placeholder = "ex: 25 cookies" required/>
+                <p class="popup_label">Additional Information:</p>
+                <input class="popup_input" type="text" name="additional info"/>
+                <button onclick="addListing2()" type="button" class = "next_
+                button">Next</button>
+                </div>
+            </form>
+    </div>
+</div>
+<div class="background" id="myListing2" onclick="closeForm(this, event)">
+    <div class="popup_form">
+    	<div class="popup_header">
+			<span class="close">&times;</span>
+			<h2>Post New Food Listing</h2>
+		</div>
+            <form action="" method="post">
+                    <form action="">
+                        <input type="checkbox" id="food1">
+                        <label for="food1">Brunch</label><br>
+                        <input type="checkbox" id="food2">
+                        <label for="food2">Dinner</label><br>
+                        <input type="checkbox" id="food3">
+                        <label for="food3">Dessert</label><br>
+                        <input type="checkbox" id="food4">
+                        <label for="food5">Vegetarian</label><br>
+                        <input type="checkbox" id="food5">
+                        <label for="food6">Vegan</label><br>
+                    </form>
+                <div class="popup_submit">
+                    <input type="submit" name="new_listing" class="popup_submit" value="Next"/>
+                </div>
+                <button onclick="addListing()" type="button" class = "back_button">Back</button>
+                <button onclick="addListing3()" type="button" class = "next_button">Next</button>
+            </form>
+    </div>
+</div>
+<div class="background" id="myListing3" onclick="closeForm(this, event)">
+    <div class="popup_form">
+    	<div class="popup_header">
+			<span class="close">&times;</span>
+			<p>Take a Vertical Picture of Food (Opt.)</p>
+		</div>
+            <form action="" method="post">
+                <img src="static/cameraApp.png">
+                <button onclick="addListing2()" type="button" class = "back_button">Back</button>
+                <button onclick="addListing4()" type="button" class = "next_button">Next</button>
+            </form>
+    </div>
+</div>
+<div class="background" id="myListing4" onclick="closeForm(this, event)">
+    <div class="popup_form">
+    	<div class="popup_header">
+			<span class="close">&times;</span>
+			<h2>Select Approximate Location on Map</h2>
+		</div>
+                <form action="" method="post">
+                <img src="static/campusMap.jpg">
+            </form>
+    </div>
+</div>
+<div class="background" id="myListing5" onclick="closeForm(this, event)">
+    <div class="popup_form">
+    	<div class="popup_header">
+			<span class="close">&times;</span>
+			<h2>Select Approximate Location on Map</h2>
+		</div>
+            <form action="" method="post">
+                <img src="static/campusMap.jpg">
+                <div class="popup_submit">
+                    <input type="submit" name="new_listing" class="popup_submit" value="Post Listing"/>
+                </div>
+            </form>
+    </div>
+</div>
+</body>
+</html>
